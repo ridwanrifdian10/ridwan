@@ -2,7 +2,7 @@
 @section('main')
     <div class="mx-auto px-4">
         @if (Auth::check())
-            <P class="text-6xl m-10 font-thin">WELCOME BACK!, <b>{{ auth::user()->name }}</b></P> 
+            <P class="text-6xl m-10 font-thin">welcome back!, <b>{{ auth::user()->name }}</b></P> 
         @endif
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
