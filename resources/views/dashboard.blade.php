@@ -1,8 +1,13 @@
 @extends('layout.header')
+@extends('layout.body')
 @section('main')
+
     <div class="mx-auto px-4">
         @if (Auth::check())
-            <P class="text-6xl m-10 font-thin">welcome back!, <b>{{ auth::user()->name }}</b></P> 
+            <p class="text-6xl m-10 font-thin animate-fade-in">
+                <span class="animate-slide-up inline-block">Welcome Back!</span>, 
+                <b class="animate-slide-right inline-block">{{ auth::user()->name }}</b>
+            </p> 
         @endif
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -87,4 +92,33 @@
             </div>
         </div>
     </div>
+
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideRight {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .animate-slide-right {
+            animation: slideRight 0.8s ease-out 0.3s backwards;
+        }
+    </style>
 @endsection 

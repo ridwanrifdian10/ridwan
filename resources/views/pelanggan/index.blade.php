@@ -1,4 +1,5 @@
 @extends('layout.header')
+
 @section('main')
     <div class="container">
         <div class="mx-10 my-6">

@@ -40,30 +40,31 @@
 
     <nav class="bg-nav shadow">
         <div class="container flex items-center justify-between p-6 mx-auto text-black capitalize">
-            <div class="text-black text-4xl font-bold w-1/4">
+            <div class="text-white/85 text-4xl font-bold w-1/4">
                 <h1>
                     RENTAL
                 </h1>
             </div>
-            
+
             <div class="flex items-center justify-center w-2/4">
                 <a href="{{ route('dashboard') }}"
-                    class="border-b-2 {{ request()->routeIs('dashboard') ? 'border-blue-500' : 'border-transparent' }} hover:text-black transition-colors duration-300 transform hover:border-blue-500 mx-1.5 sm:mx-6">DASHBOARD</a>
+                    class="border-b-2 {{ request()->routeIs('dashboard') ? 'border-gray-800' : 'border-transparent' }} hover:text-black text-white transition-colors duration-300 transform hover:border-gray-800 mx-1.5 sm:mx-6">DASHBOARD</a>
 
                 <a href="{{ route('pelanggan.index') }}"
-                    class="border-b-2 {{ request()->routeIs('pelanggan.*') ? 'border-blue-500' : 'border-transparent' }} hover:text-black transition-colors duration-300 transform hover:border-blue-500 mx-1.5 sm:mx-6">CUSTOMER</a>
+                    class="border-b-2 {{ request()->routeIs('pelanggan.*') ? 'border-gray-800' : 'border-transparent' }} hover:text-black text-white transition-colors duration-300 transform hover:border-gray-800 mx-1.5 sm:mx-6">CUSTOMER</a>
 
                 <a href="{{ route('sepeda.index') }}"
-                    class="border-b-2 {{ request()->routeIs('sepeda.*') ? 'border-blue-500' : 'border-transparent' }} hover:text-black transition-colors duration-300 transform hover:border-blue-500 mx-1.5 sm:mx-6">BICYCLE</a>
+                    class="border-b-2 {{ request()->routeIs('sepeda.*') ? 'border-gray-800' : 'border-transparent' }} hover:text-black text-white transition-colors duration-300 transform hover:border-gray-800 mx-1.5 sm:mx-6">BICYCLE</a>
 
                 <a href="{{ route('transaksi.index') }}"
-                    class="border-b-2 {{ request()->routeIs('transaksi.*') ? 'border-blue-500' : 'border-transparent' }} hover:text-black transition-colors duration-300 transform hover:border-blue-500 mx-1.5 sm:mx-6">TRANSACTION</a>
+                    class="border-b-2 {{ request()->routeIs('transaksi.*') ? 'border-gray-800' : 'border-transparent' }} hover:text-black text-white transition-colors duration-300 transform hover:border-gray-800 mx-1.5 sm:mx-6">TRANSACTION</a>
             </div>
 
             <div class="relative w-1/4 flex justify-end">
-                <button onclick="toggleDropdown()" class="flex items-center space-x-2 text-black hover:text-gray-800">
+                <button onclick="toggleDropdown()" class="flex items-center space-x-2 text-white     hover:text-red-700">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                     </svg>
                     <span>Account</span>
                 </button>
@@ -88,7 +89,7 @@
         }
 
         // Menutup dropdown ketika mengklik di luar
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             if (!event.target.matches('button')) {
                 const dropdowns = document.getElementsByClassName('dropdown');
                 for (const dropdown of dropdowns) {
