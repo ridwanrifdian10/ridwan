@@ -43,6 +43,8 @@ class TransaksiController extends Controller
             'tanggalSewa' => 'required',
             'tanggalKembali' => 'required',
             'totalBiaya' => 'required',
+            'denda' => 'required',
+            'jaminan' => 'required',                                                     
             'status' => 'required'
         ]);
         Transaksi::create($request->all());
@@ -79,6 +81,8 @@ class TransaksiController extends Controller
             'tanggalSewa' => 'required',
             'tanggalKembali' => 'required',
             'totalBiaya' => 'required',
+            'denda' => 'required', 
+            'jaminan' => 'required', 
             'status' => 'required',
         ]);
         $transaksi = Transaksi::findOrFail($id);

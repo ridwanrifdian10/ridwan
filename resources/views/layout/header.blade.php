@@ -10,32 +10,7 @@
 </head>
 
 <body>
-    {{-- <nav class="bg-nav 300 p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="text-black text-4xl font-bold">
-                <h1>
-                    RENTAL
-                </h1>
-            </div>
-
-            <div class="space-x-4">
-                <a href="{{ route('dashboard') }}" class="text-gray-500 hover:text-white">DASHBOARD</a>
-                <a href="{{ route('pelanggan.index') }}" class="text-gray-500 hover:text-white">CUSTOMER</a>
-                <a href="{{ route('sepeda.index') }}" class="text-gray-500 hover:text-white">BICYCLE</a>
-                <a href="{{ route('transaksi.index') }}" class="text-gray-500 hover:text-white">TRANSACTION</a>
-            </div>
-
-            <div>
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    @method('POST')
-                    <button class="text-gray-500 hover:text-white">
-                        LOG OUT
-                    </button>
-                </form>
-            </div>
-        </div>
-    </nav> --}}
+   
 
 
     <nav class="bg-nav shadow">

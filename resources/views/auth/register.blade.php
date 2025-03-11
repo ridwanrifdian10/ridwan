@@ -60,7 +60,7 @@
                         </div>
 
                     <button type="submit" 
-                      class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-300">REGISTER</button>
+                      class="w-full bg-slate-500 hover:bg-gray-600 text-white py-2 rounded transition duration-300">REGISTER</button>
                 </div>
                 
                 <div class="register-link mt-4 text-white text-center">

@@ -31,10 +31,9 @@ class SepedaController extends Controller
     {
         $request->validate([
             'merk' => 'required',
-            'tipe' => 'required',
-            'warna' => 'required',
             'sewa' => 'required',
-            'status' => 'required'
+            'jumlah' => 'required',
+            'foto' => 'required'
         ]);
 
         $imageName = time().'.'.$request->foto->extension();
@@ -42,11 +41,9 @@ class SepedaController extends Controller
 
         Sepeda::create([
             'merk' => $request->merk, 
-            'foto' => 'images/'.$imageName, 
-            'tipe' => $request->tipe, 
-            'warna' => $request->warna, 
             'sewa' => $request->sewa, 
-            'status' => $request->status,
+            'jumlah' => $request->jumlah, 
+            'foto' => 'images/'.$imageName, 
         ]);
         return redirect()->route('sepeda.index');
     }
@@ -75,42 +72,35 @@ class SepedaController extends Controller
     {
         $request->validate([
             'merk' => 'required',
-            'tipe' => 'required',
-            'warna' => 'required',
             'sewa' => 'required',
-            'status' => 'required',
+            'jumlah' => 'required',
         ]);
     
         $sepeda = Sepeda::findOrFail($id);
     
-        // Cek apakah ada foto baru yang diunggah
         if ($request->hasFile('foto')) {
             $request->validate([
                 'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
             ]);
     
-            // Hapus foto lama jika ada
             if ($sepeda->foto && file_exists(public_path($sepeda->foto))) {
                 unlink(public_path($sepeda->foto));
             }
     
-            // Simpan foto baru
             $imageName = time().'.'.$request->foto->extension();
             $request->foto->move(public_path('images'), $imageName);
             $sepeda->foto = 'images/'.$imageName;
         }
     
-        // Update data
         $sepeda->update([
-            'merk' => $request->merk,
-            'tipe' => $request->tipe,
-            'warna' => $request->warna,
-            'sewa' => $request->sewa,
-            'status' => $request->status,
+            'merk' => $request->merk, 
+            'sewa' => $request->sewa, 
+            'jumlah' => $request->jumlah, 
         ]);
     
         return redirect()->route('sepeda.index');
     }
+
     /**
      * Remove the specified resource from storage.
      */

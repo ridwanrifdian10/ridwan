@@ -13,8 +13,7 @@ class Pelanggan extends Model
     protected $fillable = [
         'nama',
         'alamat',
-        'noTelp',
-        'email',
+        'foto',
     ];
 
     public function transaksi() {

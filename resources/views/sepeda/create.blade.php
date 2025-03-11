@@ -11,29 +11,20 @@
             <form action="{{ route('sepeda.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="space-y-2">
-                    <label for="merk" class="block">MERK:</label>
+                    <label for="merk" class="block">Merk</label>
                     <input type="text" class="border rounded p-2 w-full" name="merk" placeholder="Silahkan isi merk">
 
-                    <label for="foto" class="block">FOTO:</label>
-                    <input type="file" class="border rounded p-2 w-full" name="foto" placeholder="Silahkan Pilih Foto">
-
-                    <label for="tipe" class="block">TIPE:</label>
-                    <input type="text" class="border rounded p-2 w-full" name="tipe" placeholder="Silahkan isi tipe">
-
-                    <label for="warna" class="block">WARNA:</label>
-                    <input type="text" class="border rounded p-2 w-full" name="warna" placeholder="Silahkan isi warna">
-
-                    <label for="sewa">SEWA:</label>
+                    <label for="sewa">Sewa</label>
                     <input type="text" name="sewa" class="border rounded p-2 w-full" placeholder="Silahkan isi sewa">
 
-                    <label for="status">STATUS:</label>
-                    <select name="status" id="" class="border rounded p-2 w-full">
-                        <option value="TERSEDIA">TERSEDIA</option>
-                        <option value="DISEWA">DISEWA</option>
-                    </select>
+                    <label for="jumlah" class="block">Jumlah</label>
+                    <input type="text" class="border rounded p-2 w-full" name="jumlah" placeholder="Silahkan isi Jumlah">
 
-                    <button class="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded min-w-full">
-                        SAVE
+                    <label for="foto" class="block">Foto</label>
+                    <input type="file" class="border rounded p-2 w-full" name="foto" placeholder="Silahkan Pilih Foto">
+
+                    <button class="bg-slate-400 hover:bg-gray-700 text-white px-4 py-2 rounded min-w-full">
+                        SIMPAN
                     </button>
                 </div>
             </form>

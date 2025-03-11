@@ -16,6 +16,8 @@ class Transaksi extends Model
         'tanggalSewa',
         'tanggalKembali',
         'totalBiaya',
+        'denda',
+        'jaminan',
         'status',
     ];
 

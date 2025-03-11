@@ -12,11 +12,9 @@ class Sepeda extends Model
     protected $primaryKey = 'idSepeda';
     protected $fillable = [
         'merk',
-        'foto',
-        'tipe',
-        'warna',
         'sewa',
-        'status'
+        'jumlah',
+        'foto',
     ];
 
     public function transaksi() {

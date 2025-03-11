@@ -1,61 +1,65 @@
 @extends('layout.header')
 
 @section('main')
-    <div class="container">
-        <div class="mx-10 my-6">
-            <h1 class="text-3xl font-semibold text-start">
-                DATA PELANGGAN
-            </h1>
+    <div class="container mx-auto px-4 py-6">
+        <div class="mb-6">
+            <h1 class="text-3xl font-semibold text-gray-800">Data Pelanggan</h1>
         </div>
 
-        <div class="mx-16">
-            <a href="{{ route('pelanggan.create') }}" class=" bg-blue-400 hover:bg-blue-300 text-white rounded px-4 py-2" >
-                CREATE
+        <div class="mb-4">
+            <a href="{{ route('pelanggan.create') }}"
+                class="bg-slate-400 hover:bg-gray-700 text-white px-4 py-2 rounded">
+                Tambah Pelanggan
             </a>
         </div>
 
-        <table class="mt-6 table w-screen border-collapse border border-gray-300">
-            <thead>
-                <tr>
-                    <th class="border border-gray-300 px-4 py-2">NO</th>
-                    <th class="border border-gray-300 px-4 py-2">NAMA</th>
-                    <th class="border border-gray-300 px-4 py-2">ALAMAT</th>
-                    <th class="border border-gray-300 px-4 py-2">NO TELP</th>
-                    <th class="border border-gray-300 px-4 py-2">EMAIL</th>
-                    <th class="border border-gray-300 px-4 py-2">ACTION</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                @forelse ($pelanggan as $index => $pelanggan)
-                    <tr class="border border-gray-300 text-center">
-                        <td class="border px-4 py-2">{{ $index + 1 }}</td>
-                        <td class="border px-4 py-2">{{ $pelanggan->nama }}</td>
-                        <td class="border px-4 py-2">{{ $pelanggan->alamat }}</td>
-                        <td class="border px-4 py-2">{{ $pelanggan->noTelp }}</td>
-                        <td class="border px-4 py-2">{{ $pelanggan->email }}</td>
-                        <td class="flex justify-center border px-4 py-2">
-                            <a 
-                                href="{{  route('pelanggan.edit', $pelanggan->idCustomer) }}" 
-                                class="bg-green-400 hover:bg-green-300 text-white rounded px-4 py-2 me-2">
-                                EDIT
-                            </a>
-                            <form action="{{ route('pelanggan.destroy', $pelanggan->idCustomer) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="bg-red-600 hover:bg-red-500 text-white rounded px-4 py-2">
-                                    DELETE
-                                </button>
-                            </form>
-                        </td>
+        <div class="overflow-x-auto">
+            <table class="w-full border-collapse border border-gray-300">
+                <thead>
+                    <tr class="bg-slate-500 text-white">
+                        <th class="border border-gray-300 px-4 py-2">No</th>
+                        <th class="border border-gray-300 px-4 py-2">Nama</th>
+                        <th class="border border-gray-300 px-4 py-2">Alamat</th>
+                        <th class="border border-gray-300 px-4 py-2">Foto</th>
+                        <th class="border border-gray-300 px-4 py-2">Action</th>
                     </tr>
-                @empty
-                    <tr>
-                        <td colspan="6">BELUM ADA DATA</td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
+                </thead>
 
+                <tbody>
+                    @forelse ($pelanggan as $index => $pelanggan)
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2 text-center">{{ $index + 1 }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ $pelanggan->nama }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ $pelanggan->alamat }}</td>
+                            <td class="border border-gray-300 px-4 py-2 text-center">
+                                <img src="{{ asset($pelanggan->foto) }}" class="h-24 w-24 object-contain mx-auto" alt="Foto Pelanggan">
+                            </td>
+
+                            <td class="border border-gray-300 px-4 py-2">
+                                <div class="flex justify-center gap-2">
+                                    <a href="{{ route('pelanggan.edit', $pelanggan->idCustomer) }}"
+                                        class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-1 rounded">
+                                        Edit
+                                    </a>
+                                    <form action="{{ route('pelanggan.destroy', $pelanggan->idCustomer) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="5" class="border border-gray-300 px-4 py-2 text-center">
+                                Belum ada data
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
     </div>
 @endsection

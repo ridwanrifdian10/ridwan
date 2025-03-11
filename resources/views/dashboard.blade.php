@@ -4,9 +4,8 @@
 
     <div class="mx-auto px-4">
         @if (Auth::check())
-            <p class="text-6xl m-10 font-thin animate-fade-in">
-                <span class="animate-slide-up inline-block">Welcome Back!</span>, 
-                <b class="animate-slide-right inline-block">{{ auth::user()->name }}</b>
+            <p class="text-6xl m-10 font-thin ">
+                <span>Welcome Back!</span>,<b>{{ auth::user()->name }}</b>
             </p> 
         @endif
 

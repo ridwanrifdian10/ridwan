@@ -30,12 +30,26 @@ class PelangganController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
-            'alamat' => 'required',
-            'noTelp' => 'required',
-            'email' => 'required',
+            'nama' => 'required|string|max:255',
+            'alamat' => 'required|string',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
-        Pelanggan::create($request->all());
+    
+        $pelanggan = new Pelanggan();
+        $pelanggan->nama = $request->nama;
+        $pelanggan->alamat = $request->alamat;
+    
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            
+            $file->move(public_path('images'), $filename);
+            
+            $pelanggan->foto = 'images/' . $filename;
+        }
+    
+        $pelanggan->save();
+    
         return redirect()->route('pelanggan.index');
     }
 
@@ -62,16 +76,28 @@ class PelangganController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'nama' => 'required',
-            'alamat' => 'required',
-            'noTelp' => 'required',
-            'email' => 'required',
+            'nama' => 'required|string|max:255',
+            'alamat' => 'required|string',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', 
         ]);
+
         $pelanggan = Pelanggan::findOrFail($id);
-        $pelanggan->update($request->all());
+        $pelanggan->nama = $request->nama;
+        $pelanggan->alamat = $request->alamat;
+
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $filename = time() . '_' . $file->getClientOriginalName(); 
+
+            $file->move(public_path('images'), $filename);
+
+            $pelanggan->foto = 'images/' . $filename;
+        }
+
+        $pelanggan->save();
+
         return redirect()->route('pelanggan.index');
     }
-
     /**
      * Remove the specified resource from storage.
      */
